@@ -13,6 +13,7 @@
 		E75FDF121D19884F003B5A54 /* ooperciseRPG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E75FDF101D19884F003B5A54 /* ooperciseRPG.xcdatamodeld */; };
 		E75FDF141D19884F003B5A54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E75FDF131D19884F003B5A54 /* Assets.xcassets */; };
 		E75FDF171D19884F003B5A54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E75FDF151D19884F003B5A54 /* LaunchScreen.storyboard */; };
+		E75FDF1F1D19AC41003B5A54 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75FDF1E1D19AC41003B5A54 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E75FDF131D19884F003B5A54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E75FDF161D19884F003B5A54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E75FDF181D19884F003B5A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E75FDF1E1D19AC41003B5A54 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				E75FDF091D19884F003B5A54 /* AppDelegate.swift */,
 				E75FDF0B1D19884F003B5A54 /* ViewController.swift */,
 				E75FDF0D1D19884F003B5A54 /* Main.storyboard */,
+				E75FDF1E1D19AC41003B5A54 /* Player.swift */,
 				E75FDF131D19884F003B5A54 /* Assets.xcassets */,
 				E75FDF151D19884F003B5A54 /* LaunchScreen.storyboard */,
 				E75FDF181D19884F003B5A54 /* Info.plist */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E75FDF1F1D19AC41003B5A54 /* Player.swift in Sources */,
 				E75FDF121D19884F003B5A54 /* ooperciseRPG.xcdatamodeld in Sources */,
 				E75FDF0C1D19884F003B5A54 /* ViewController.swift in Sources */,
 				E75FDF0A1D19884F003B5A54 /* AppDelegate.swift in Sources */,
