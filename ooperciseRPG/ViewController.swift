@@ -24,47 +24,116 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var player2Lbl: UILabel!
     
+    @IBOutlet weak var playAgainBtn: UIButton!
+    
     
     var player1: Player!
     var player2: Player!
     var outputMessage = "Either player presses Attack to start"
+    var gameInProgress = false
+
+    
+    let secondsDelay = 3.0
+
+    
+    func randomiseAttackPwr() -> Int {
+        return 10 + Int(arc4random_uniform(10))
+    }
+    
+    
+    func randomiseStartingHp() -> Int {
+        return 110 + Int(arc4random_uniform(30))
+    }
+    
+    
+    func initialiseGame() {
+        
+        player1 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "DirtyLaundry25")
+        player1Lbl.text = "\(player1.playerHp) HP"
+        
+        player2 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "EvenDirtierLaundry57")
+        player2Lbl.text = "\(player2.playerHp) HP"
+        
+        outputLbl.text = outputMessage
+        
+        player1Img.hidden = false
+        player2Img.hidden = false
+        attack1Btn.enabled = true
+        attack2Btn.enabled = true
+        
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        player1 = Player(startingHp: 110, attackPwr: 20, playerName: "DirtyLaundry25")
-        player1Lbl.text = "\(player1.playerHp) HP"
+        initialiseGame()
+    }
+    
+
+    func disableAttackBtn (attackBtn: UIButton) {
+ 
+        let delay = secondsDelay * Double(NSEC_PER_SEC)
+        let enableBtnTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         
-        player2 = Player(startingHp: 130, attackPwr: 20, playerName: "EvenDirtierLaundry57")
-        player2Lbl.text = "\(player2.playerHp) HP"
+        attackBtn.enabled = false
         
-        outputLbl.text = outputMessage
+        dispatch_after(enableBtnTime, dispatch_get_main_queue(), {attackBtn.enabled = true})
         
     }
     
-    func updateAttackResult(attacker: Player, attacked: Player, attackedPlayerLbl: UILabel, attackedPlayerImg: UIImageView) {
+   
+    func clearOutputLblIfStarted() {
+        
+        if !gameInProgress {
+            gameInProgress = true
+            outputLbl.hidden = true
+        }
+        
+    }
+    func updateAttackResult(attacker: Player, attacked: Player, attackedPlayerLbl: UILabel, attackedPlayerImg: UIImageView, attackedPlayerBtn: UIButton, attackerPlayerBtn:UIButton) {
 
-        if attacker.attemptAttack(attacked.attackPwr) {
+        if attacked.attemptAttack(attacker.attackPwr) {
+            
             if !attacked.isAlive {
+                
                 attackedPlayerLbl.text = "Dead"
                 attackedPlayerImg.hidden = true
                 outputLbl.text = "The winner is \(attacker.name)"
+                outputLbl.hidden = false
+                playAgainBtn.hidden = false
+                attackedPlayerBtn.enabled = false
+                attackerPlayerBtn.enabled = false
+                
             } else {
                 attackedPlayerLbl.text = "\(attacked.playerHp) HP"
+                disableAttackBtn(attackedPlayerBtn)
             }
         }
     }
     
 
     @IBAction func onPlayer1AttackTapped(sender: AnyObject) {
-        updateAttackResult(player1, attacked: player2, attackedPlayerLbl: player2Lbl, attackedPlayerImg: player2Img)
+        
 
+        clearOutputLblIfStarted()
+        
+        updateAttackResult(player1, attacked: player2, attackedPlayerLbl: player2Lbl, attackedPlayerImg: player2Img, attackedPlayerBtn: attack2Btn, attackerPlayerBtn: attack1Btn)
     }
     
+    
     @IBAction func onPlayer2AttackTapped(sender: AnyObject) {
-        updateAttackResult(player2, attacked: player1, attackedPlayerLbl: player1Lbl, attackedPlayerImg: player1Img)
+        
+        clearOutputLblIfStarted()
+        
+        updateAttackResult(player2, attacked: player1, attackedPlayerLbl: player1Lbl, attackedPlayerImg: player1Img, attackedPlayerBtn: attack1Btn, attackerPlayerBtn: attack2Btn)
     }
+    
+    
+    @IBAction func onPlayAgainTapped(sender: AnyObject) {
+        initialiseGame()
+    }
+    
 
 }
 
