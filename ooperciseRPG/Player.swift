@@ -12,6 +12,7 @@ class Player {
     private var _playerHp: Int = 100
     private var _attackPwr: Int = 10
     private var _name: String
+    private var _image: String
     
     var attackPwr: Int {
         return _attackPwr
@@ -25,6 +26,10 @@ class Player {
         return _name
     }
     
+    var playerImage: String {
+        return _image
+    }
+    
     var isAlive: Bool {
         get {
             if playerHp <= 0 {
@@ -35,10 +40,11 @@ class Player {
         }
     }
     
-    init(startingHp: Int, attackPwr: Int, playerName: String) {
+    init(startingHp: Int, attackPwr: Int, playerName: String, playerImage: String) {
         self._playerHp = startingHp
         self._attackPwr = attackPwr
         self._name = playerName
+        self._image = playerImage
     }
     
     func attemptAttack(attackPwr: Int) -> Bool {

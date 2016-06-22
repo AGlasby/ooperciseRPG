@@ -31,13 +31,14 @@ class ViewController: UIViewController {
     var player2: Player!
     var outputMessage = "Either player presses Attack to start"
     var gameInProgress = false
+    var playerImages = ["",""]
 
     
     let secondsDelay = 3.0
 
     
     func randomiseAttackPwr() -> Int {
-        return 10 + Int(arc4random_uniform(10))
+        return 10 + Int(arc4random_uniform(20))
     }
     
     
@@ -46,19 +47,32 @@ class ViewController: UIViewController {
     }
     
     
+    func selectImageForPlayers() -> [String] {
+        var imageNameArray = ["",""]
+        imageNameArray[0] = ("enemy.png")
+        imageNameArray[1] = ("player.png")
+        return imageNameArray
+    }
+    
+    
     func initialiseGame() {
         
-        player1 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "DirtyLaundry25")
-        player1Lbl.text = "\(player1.playerHp) HP"
+        playerImages = selectImageForPlayers()
         
-        player2 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "EvenDirtierLaundry57")
+        player1 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "DirtyLaundry25", playerImage: playerImages[0])
+        player2 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "EvenDirtierLaundry57", playerImage: playerImages[1])
+        
+        player1Lbl.text = "\(player1.playerHp) HP"
         player2Lbl.text = "\(player2.playerHp) HP"
         
         outputLbl.text = outputMessage
         
         player1Img.hidden = false
-        player2Img.hidden = false
+        player1Img.image = UIImage(named: player1.playerImage)
         attack1Btn.enabled = true
+        
+        player2Img.hidden = false
+        player2Img.image = UIImage(named: player2.playerImage)
         attack2Btn.enabled = true
         
     }
