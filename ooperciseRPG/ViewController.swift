@@ -40,6 +40,8 @@ class ViewController: UIViewController {
     
     let outputMessage = "Either player presses Attack to start"
     let secondsDelay = 3.0
+    let playerImg = "player.png"
+    let enemyImg = "enemy.png"
 
     
     func randomiseTrait(base: Int, range: Int) -> Int {
@@ -156,23 +158,25 @@ class ViewController: UIViewController {
     }
    
     @IBAction func onSelectEnemyTapped(sender: AnyObject) {
+        
         if !player1Selected {
-            player1.setPlayerImage("enemy.png")
+            player1.setPlayerImage(enemyImg)
             outputLbl.text = "Player 2 select your character"
             player1Selected = true
         } else {
-            player2.setPlayerImage("enemy.png")
+            player2.setPlayerImage(enemyImg)
             startGame()
         }
     }
     
     @IBAction func onSelectPlayerTapped(sender: AnyObject) {
+        
         if !player1Selected {
-            player1.setPlayerImage("player.png")
+            player1.setPlayerImage(playerImg)
             outputLbl.text = "Player 2 select your character"
             player1Selected = true
         } else {
-            player2.setPlayerImage("player.png")
+            player2.setPlayerImage(playerImg)
             startGame()
         }
 
