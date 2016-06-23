@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E70F227D1D1C09D400BD6E50 /* RPGGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70F227C1D1C09D400BD6E50 /* RPGGameController.swift */; };
 		E75FDF0A1D19884F003B5A54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75FDF091D19884F003B5A54 /* AppDelegate.swift */; };
 		E75FDF0C1D19884F003B5A54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75FDF0B1D19884F003B5A54 /* ViewController.swift */; };
 		E75FDF0F1D19884F003B5A54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E75FDF0D1D19884F003B5A54 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E70F227C1D1C09D400BD6E50 /* RPGGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPGGameController.swift; sourceTree = "<group>"; };
 		E75FDF061D19884F003B5A54 /* ooperciseRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ooperciseRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75FDF091D19884F003B5A54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E75FDF0B1D19884F003B5A54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				E75FDF0B1D19884F003B5A54 /* ViewController.swift */,
 				E75FDF0D1D19884F003B5A54 /* Main.storyboard */,
 				E75FDF1E1D19AC41003B5A54 /* Player.swift */,
+				E70F227C1D1C09D400BD6E50 /* RPGGameController.swift */,
 				E75FDF131D19884F003B5A54 /* Assets.xcassets */,
 				E75FDF151D19884F003B5A54 /* LaunchScreen.storyboard */,
 				E75FDF181D19884F003B5A54 /* Info.plist */,
@@ -146,6 +149,7 @@
 				E75FDF121D19884F003B5A54 /* ooperciseRPG.xcdatamodeld in Sources */,
 				E75FDF0C1D19884F003B5A54 /* ViewController.swift in Sources */,
 				E75FDF0A1D19884F003B5A54 /* AppDelegate.swift in Sources */,
+				E70F227D1D1C09D400BD6E50 /* RPGGameController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +301,7 @@
 				E75FDF1D1D19884F003B5A54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
