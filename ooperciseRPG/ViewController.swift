@@ -36,18 +36,14 @@ class ViewController: UIViewController {
     var gameInProgress = false
     var playerImages = ["",""]
     var player1Selected = false
+
     
     let outputMessage = "Either player presses Attack to start"
     let secondsDelay = 3.0
 
     
-    func randomiseAttackPwr() -> Int {
-        return 10 + Int(arc4random_uniform(20))
-    }
-    
-    
-    func randomiseStartingHp() -> Int {
-        return 110 + Int(arc4random_uniform(30))
+    func randomiseTrait(base: Int, range: Int) -> Int {
+        return base + Int(arc4random_uniform(UInt32(range)))
     }
     
     
@@ -59,8 +55,8 @@ class ViewController: UIViewController {
         attack1Btn.enabled = false
         attack2Btn.enabled = false
         
-        player1 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "DirtyLaundry25", playerImage: "")
-        player2 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "EvenDirtierLaundry57", playerImage: "")
+        player1 = Player(startingHp: randomiseTrait(110, range:30), attackPwr: randomiseTrait(10, range: 20), playerName: "DirtyLaundry25", playerImage: "")
+        player2 = Player(startingHp: randomiseTrait(110, range:30), attackPwr: randomiseTrait(10, range: 20), playerName: "EvenDirtierLaundry57", playerImage: "")
 
         enemy.hidden = false
         player.hidden = false
