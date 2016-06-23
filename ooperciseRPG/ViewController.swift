@@ -30,6 +30,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var enemy: UIButton!
     
+    @IBOutlet weak var imageStackView: UIStackView!
+    
     
     var player1: Player!
     var player2: Player!
@@ -60,8 +62,7 @@ class ViewController: UIViewController {
         player1 = Player(startingHp: randomiseTrait(110, range:30), attackPwr: randomiseTrait(10, range: 20), playerName: "DirtyLaundry25", playerImage: "")
         player2 = Player(startingHp: randomiseTrait(110, range:30), attackPwr: randomiseTrait(10, range: 20), playerName: "EvenDirtierLaundry57", playerImage: "")
 
-        enemy.hidden = false
-        player.hidden = false
+        imageStackView.hidden = false
         
         player1Selected = false
         
@@ -74,8 +75,9 @@ class ViewController: UIViewController {
     
     func startGame() {
         outputLbl.text = outputMessage
-        enemy.hidden = true
-        player.hidden = true
+        
+        imageStackView.hidden = true
+        
         attack1Btn.enabled = true
         attack2Btn.enabled = true
         player1Img.image = UIImage(named: player1.playerImage)
@@ -100,9 +102,10 @@ class ViewController: UIViewController {
         
         attackBtn.enabled = false
         
-        dispatch_after(enableBtnTime, dispatch_get_main_queue(), {attackBtn.enabled = true})
-        
-    }
+        dispatch_after(enableBtnTime, dispatch_get_main_queue(), {
+            if self.gameInProgress {
+                attackBtn.enabled = true}})
+        }
     
    
     func clearOutputLblIfStarted() {
