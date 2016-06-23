@@ -44,12 +44,16 @@ class Player {
         self._playerHp = startingHp
         self._attackPwr = attackPwr
         self._name = playerName
-        self._image = playerImage
+        self._image = ""
     }
     
     func attemptAttack(attackPwr: Int) -> Bool {
         self._playerHp -= attackPwr
         return true
+    }
+    
+    func setPlayerImage(playerImageName: String) {
+        self._image = playerImageName
     }
     
     

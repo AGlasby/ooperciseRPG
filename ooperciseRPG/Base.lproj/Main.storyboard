@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzw-Tm-Abi">
-                                <rect key="frame" x="232" y="36.5" width="136" height="30"/>
+                                <rect key="frame" x="232" y="36" width="136" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="0u2-h6-rra"/>
                                     <constraint firstAttribute="height" constant="30" id="OOO-Ux-Sav"/>
@@ -120,12 +120,39 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Play Again">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onPlayAgainTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbh-1H-tlM"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="J3C-d6-9wu">
+                                <rect key="frame" x="80" y="232" width="440" height="0.0"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hs1-H7-a1I">
+                                        <rect key="frame" x="-80" y="-300" width="0.0" height="136"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="136" id="B2U-Hq-G4D"/>
+                                            <constraint firstAttribute="width" constant="115" id="iRV-lz-hld"/>
+                                        </constraints>
+                                        <state key="normal" image="enemy"/>
+                                        <connections>
+                                            <action selector="onSelectEnemyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cxz-Z4-ZMc"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waK-vb-iiy">
+                                        <rect key="frame" x="-80" y="-300" width="0.0" height="136"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="136" id="kY6-MQ-rIu"/>
+                                            <constraint firstAttribute="width" constant="115" id="mhJ-S2-QtG"/>
+                                        </constraints>
+                                        <state key="normal" image="player"/>
+                                        <connections>
+                                            <action selector="onSelectPlayerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p95-Yc-ytf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -134,6 +161,7 @@
                             <constraint firstAttribute="trailing" secondItem="ojo-zg-0go" secondAttribute="trailing" id="49i-CD-gGE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ca7-nC-c94" secondAttribute="trailing" constant="90" id="5mA-Jg-hVE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ojo-zg-0go" secondAttribute="bottom" id="7su-1n-5aJ"/>
+                            <constraint firstItem="J3C-d6-9wu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="83G-WV-Us1"/>
                             <constraint firstItem="ojo-zg-0go" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Av-Ji-v2m"/>
                             <constraint firstItem="Eh9-nA-p3J" firstAttribute="top" secondItem="J18-6N-Nsg" secondAttribute="bottom" constant="20" id="8wZ-38-QXX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J18-6N-Nsg" secondAttribute="trailing" constant="10" id="E4h-5f-lrO"/>
@@ -154,6 +182,7 @@
                             <constraint firstItem="J18-6N-Nsg" firstAttribute="centerY" secondItem="Ca7-nC-c94" secondAttribute="centerY" id="gKI-bg-QOg"/>
                             <constraint firstItem="hXt-Su-B1j" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="gTJ-X8-8KN"/>
                             <constraint firstItem="hXt-Su-B1j" firstAttribute="centerY" secondItem="fW4-g4-0Ua" secondAttribute="centerY" id="h55-WQ-LcB"/>
+                            <constraint firstItem="J3C-d6-9wu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="i2h-rh-EVq"/>
                             <constraint firstItem="ByL-Ip-9Wd" firstAttribute="top" secondItem="8Kn-PU-BEe" secondAttribute="bottom" id="l0E-Wz-zfq"/>
                             <constraint firstItem="tPa-IX-Wd9" firstAttribute="centerX" secondItem="RAR-k2-pP9" secondAttribute="centerX" id="lme-V3-coI"/>
                             <constraint firstItem="J18-6N-Nsg" firstAttribute="centerY" secondItem="fW4-g4-0Ua" secondAttribute="centerY" id="oJx-fM-8T8"/>
@@ -167,6 +196,7 @@
                             <constraint firstItem="Nzw-Tm-Abi" firstAttribute="top" secondItem="QUe-Be-fjA" secondAttribute="bottom" constant="15" id="t4V-yr-nGH"/>
                             <constraint firstItem="QUe-Be-fjA" firstAttribute="centerX" secondItem="J18-6N-Nsg" secondAttribute="centerX" constant="-45" id="t4x-w1-yAF"/>
                             <constraint firstItem="Nzw-Tm-Abi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tVc-Sb-ft6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J3C-d6-9wu" secondAttribute="trailing" constant="60" id="xNG-hU-kde"/>
                             <constraint firstItem="J18-6N-Nsg" firstAttribute="centerX" secondItem="Ca7-nC-c94" secondAttribute="centerX" id="zBQ-UW-uQc"/>
                         </constraints>
                         <variation key="default">
@@ -180,8 +210,10 @@
                     <connections>
                         <outlet property="attack1Btn" destination="fW4-g4-0Ua" id="axs-Dc-cGF"/>
                         <outlet property="attack2Btn" destination="Ca7-nC-c94" id="Egz-s9-JT8"/>
+                        <outlet property="enemy" destination="Hs1-H7-a1I" id="8Hb-gB-x93"/>
                         <outlet property="outputLbl" destination="RAR-k2-pP9" id="v7X-Ec-lzM"/>
                         <outlet property="playAgainBtn" destination="Nzw-Tm-Abi" id="aYZ-PH-GL2"/>
+                        <outlet property="player" destination="waK-vb-iiy" id="qbz-rJ-8oJ"/>
                         <outlet property="player1Img" destination="y7d-TV-QlQ" id="r7U-qq-TCJ"/>
                         <outlet property="player1Lbl" destination="Eh9-nA-p3J" id="eJt-l0-Bx9"/>
                         <outlet property="player2Img" destination="bvq-We-7Lo" id="ynC-xE-iCY"/>

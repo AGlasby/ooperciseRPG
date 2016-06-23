@@ -26,14 +26,18 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playAgainBtn: UIButton!
     
+    @IBOutlet weak var player: UIButton!
+    
+    @IBOutlet weak var enemy: UIButton!
+    
     
     var player1: Player!
     var player2: Player!
-    var outputMessage = "Either player presses Attack to start"
     var gameInProgress = false
     var playerImages = ["",""]
-
+    var player1Selected = false
     
+    let outputMessage = "Either player presses Attack to start"
     let secondsDelay = 3.0
 
     
@@ -47,34 +51,40 @@ class ViewController: UIViewController {
     }
     
     
-    func selectImageForPlayers() -> [String] {
-        var imageNameArray = ["",""]
-        imageNameArray[0] = ("enemy.png")
-        imageNameArray[1] = ("player.png")
-        return imageNameArray
-    }
-    
-    
     func initialiseGame() {
+
+        player1Img.hidden = true
+        player2Img.hidden = true
+        playAgainBtn.hidden = true
+        attack1Btn.enabled = false
+        attack2Btn.enabled = false
         
-        playerImages = selectImageForPlayers()
+        player1 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "DirtyLaundry25", playerImage: "")
+        player2 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "EvenDirtierLaundry57", playerImage: "")
+
+        enemy.hidden = false
+        player.hidden = false
         
-        player1 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "DirtyLaundry25", playerImage: playerImages[0])
-        player2 = Player(startingHp: randomiseStartingHp(), attackPwr: randomiseAttackPwr(), playerName: "EvenDirtierLaundry57", playerImage: playerImages[1])
+        player1Selected = false
+        
+        outputLbl.text = "Player 1 select your character"
         
         player1Lbl.text = "\(player1.playerHp) HP"
         player2Lbl.text = "\(player2.playerHp) HP"
         
+    }
+    
+    func startGame() {
         outputLbl.text = outputMessage
-        
-        player1Img.hidden = false
-        player1Img.image = UIImage(named: player1.playerImage)
+        enemy.hidden = true
+        player.hidden = true
         attack1Btn.enabled = true
-        
-        player2Img.hidden = false
-        player2Img.image = UIImage(named: player2.playerImage)
         attack2Btn.enabled = true
+        player1Img.image = UIImage(named: player1.playerImage)
+        player1Img.hidden = false
         
+        player2Img.image = UIImage(named: player2.playerImage)
+        player2Img.hidden = false
     }
     
     
@@ -145,9 +155,32 @@ class ViewController: UIViewController {
     
     
     @IBAction func onPlayAgainTapped(sender: AnyObject) {
+
         initialiseGame()
     }
+   
+    @IBAction func onSelectEnemyTapped(sender: AnyObject) {
+        if !player1Selected {
+            player1.setPlayerImage("enemy.png")
+            outputLbl.text = "Player 2 select your character"
+            player1Selected = true
+        } else {
+            player2.setPlayerImage("enemy.png")
+            startGame()
+        }
+    }
     
+    @IBAction func onSelectPlayerTapped(sender: AnyObject) {
+        if !player1Selected {
+            player1.setPlayerImage("player.png")
+            outputLbl.text = "Player 2 select your character"
+            player1Selected = true
+        } else {
+            player2.setPlayerImage("player.png")
+            startGame()
+        }
+
+    }
 
 }
 
