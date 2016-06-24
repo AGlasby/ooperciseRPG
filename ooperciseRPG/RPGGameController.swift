@@ -95,30 +95,23 @@ class RpgGameController {
         _attk1Btn.enabled = false
         _attk2Btn.enabled = false
         
-        self._gameInProgress = false
-        self._player1Selected = false
+        _gameInProgress = false
+        _player1Selected = false
         
         _imgStckView.hidden = false
         
-        _player1Selected = false
         
         setOutputLbl("Player 1 select your character")
         
-        _play1Lbl.text = "\(player1.playerHp) HP"
-        _play2Lbl.text = "\(player2.playerHp) HP"
-        
-        
-        setOutputLbl(_outputMessage)
-        
-        self._imgStckView.hidden = true
-        
-        self._attk1Btn.enabled = true
-        self._attk2Btn.enabled = true
-        self._play1Img.image = UIImage(named: player1.playerImage)
-        self._play1Img.hidden = false
-        
-        self._play2Img.image = UIImage(named: player2.playerImage)
-        self._play2Img.hidden = false
+        _play1Lbl.hidden = true
+        _play2Lbl.hidden = true
+    }
+    
+    func initialisePlayerTraits() {
+        _player1.setAttackPower(self.randomiseTrait(10, range: 20))
+        _player2.setAttackPower(self.randomiseTrait(10, range: 20))
+        _player1.setPlayerHp(self.randomiseTrait(110, range:30))
+        _player2.setPlayerHp(self.randomiseTrait(110, range:30))
     }
     
 
@@ -134,9 +127,11 @@ class RpgGameController {
                 attackedPlayerImg.hidden = true
                 _outLbl.text = "The winner is \(attacker.name)"
                 _outLbl.hidden = false
-                self._playAgnBtn.hidden = false
+                _playAgnBtn.hidden = false
                 attackedPlayerBtn.enabled = false
                 attackerPlayerBtn.enabled = false
+                _play1Lbl.hidden = true
+                _play2Lbl.hidden = true
                 
             } else {
                 attackedPlayerLbl.text = "\(attacked.playerHp) HP"
@@ -145,40 +140,46 @@ class RpgGameController {
         }
     }
 
-//    func startGame() {
-//        
-//        setOutputLbl(_outputMessage)
-//
-//        self._imgStckView.hidden = true
-//        
-//        self._attk1Btn.enabled = true
-//        self._attk2Btn.enabled = true
-//        self._play1Img.image = UIImage(named: player1.playerImage)
-//        self._play1Img.hidden = false
-//
-//        self._play2Img.image = UIImage(named: player2.playerImage)
-//        self._play2Img.hidden = false
-//    }
+    func startGame() {
+        
+        setOutputLbl(_outputMessage)
+
+        _imgStckView.hidden = true
+        
+        _attk1Btn.enabled = true
+        _attk2Btn.enabled = true
+        _play1Img.image = UIImage(named: player1.playerImage)
+        _play1Img.hidden = false
+
+        _play2Img.image = UIImage(named: player2.playerImage)
+        _play2Img.hidden = false
+        _play1Lbl.text = "\(player1.playerHp) HP"
+        _play2Lbl.text = "\(player2.playerHp) HP"
+        _play1Lbl.hidden = false
+        _play2Lbl.hidden = false
+    }
 
     func selectEnemy() {
         if !_player1Selected {
             player1.setPlayerImage(_enemyImg)
-            setOutputLbl("Player 2 select your character")
             _player1Selected = true
+            setOutputLbl("Player 2 select your character")
         } else {
             player2.setPlayerImage(_enemyImg)
-//            self.startGame()
+            initialisePlayerTraits()
+            startGame()
         }
     }
     
     func selectPlayer() {
         if !_player1Selected {
             player1.setPlayerImage(_playerImg)
-            setOutputLbl("Player 2 select your character")
             _player1Selected = true
+            setOutputLbl("Player 2 select your character")
         } else {
             player2.setPlayerImage(_playerImg)
-//            self.startGame()
+            initialisePlayerTraits()
+            startGame()
         }
         
     }

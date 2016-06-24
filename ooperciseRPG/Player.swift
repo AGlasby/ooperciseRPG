@@ -56,5 +56,13 @@ class Player {
         self._image = playerImageName
     }
     
+    func setAttackPower(playerAttackPwr: Int) {
+        self._playerHp = playerHp
+    }
+    
+    func setPlayerHp(playerHp: Int) {
+        self._playerHp = playerHp
+    }
+    
     
 }
